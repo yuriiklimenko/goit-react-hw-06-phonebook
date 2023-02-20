@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice';
 import css from './Contact.module.css';
 import Button from 'components/UI/Button/Button';
+import PropTypes from 'prop-types';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -14,4 +15,12 @@ export const Contact = ({ contact }) => {
       <Button onClick={handleDelete}>Delete</Button>
     </li>
   );
+};
+
+Contact.propTypes = {
+  contact: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
 };
